@@ -1,0 +1,128 @@
+﻿<Window x:Class="BAHA_MsgSave.SettingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BAHA_MsgSave"
+        mc:Ignorable="d"
+        Title="設定" Width="400" ResizeMode="NoResize" SizeToContent="WidthAndHeight" MaxHeight="600"    >
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <Label Content="【路徑】" />
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <Label Content="輸入資料夾："/>
+                <TextBox x:Name="tbInputPath" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="200" />
+                <Button x:Name="btInputPath" Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Click="btInputPath_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <Label Content="輸出資料夾："/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="50,0,0,0">
+                <RadioButton x:Name="rbXPath" GroupName="typeOutputDir" IsChecked="True">
+                    <Label Content="「輸入資料夾」下的資料夾："/>
+                </RadioButton>
+                <TextBox x:Name="tbOutputFolder" Height="23" TextWrapping="Wrap" Text="output" Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="50,0,0,0" Visibility="Visible">
+                <RadioButton x:Name="rbFixPath" GroupName="typeOutputDir">
+                    <Label Content="自選輸出路徑："/>
+                </RadioButton>
+                <TextBox x:Name="tbOutputPath" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Top" Width="180"/>
+                <Button x:Name="btOutputPath" Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Width="25" Click="btOutputPath_Click"/>
+            </StackPanel>
+            <Separator/>
+            <Label Content="【版面】"/>
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <RadioButton x:Name="rbSimpleHTMLStyle" GroupName="typeHTMLStyle" IsChecked="True">
+                    <Label Content="簡易設定："/>
+                </RadioButton>
+                <Label Content="文字區域寬度："/>
+                <TextBox x:Name="tbMSGBlockWidth" HorizontalAlignment="Left" Text="932" VerticalAlignment="Top" Width="50" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <RadioButton x:Name="rbAdvancedHTMLStyle" GroupName="typeHTMLStyle" Checked="rbAdvancedHTMLStyle_Checked">
+                    <Label Content="自訂："/>
+                </RadioButton>
+                <Expander x:Name="expanderStyleHTML" Header="準備好要唱咒文了嗎?" IsExpanded="False" >
+                    <Border BorderBrush="Gray"  BorderThickness="1" CornerRadius="10" Margin="25,0,0,0">
+                        <StackPanel>
+                            <StackPanel>
+                                <Expander x:Name="expanderHead" Background="Black" Foreground="White" Header="&lt;head&gt;...&lt;/head&gt;" >
+                                    <StackPanel>
+                                        <Label Background="LightGray" Content="原Node的XPath"/>
+                                        <TextBox x:Name="tbOriStyleHead" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" Width="300" Text="//head" ></TextBox>
+                                        <Label Background="LightGray" Content="取代後的&lt;head&gt;...&lt;/head&gt;"/>
+                                        <TextBox x:Name="tbAfterStyleHead" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Height="66" Margin="0,0,0,0" Width="300" Text="&lt;head&gt;&#xA;    &lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8'&gt;&#xA;    &lt;title&gt;RPG之幻想國度 - 巴哈姆特&lt;/title&gt;&#xA;    &lt;link href='https://i2.bahamut.com.tw/css/guild.css' rel='stylesheet' type='text/css'&gt;&#xA;    &lt;script src='https://i2.bahamut.com.tw/js/plugins/lazysizes-1.3.1.min.js' async=''&gt;&lt;/script&gt;&#xA;    &lt;style&gt;.msgreport {width:932px}&lt;/style&gt;&#xA;&lt;head&gt;"></TextBox>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                            <StackPanel>
+                                <Expander x:Name="expanderBody" Background="Black" Foreground="White" Header="&lt;body&gt;...&lt;/body&gt;">
+                                    <StackPanel>
+                                        <Label Background="LightGray" Content="原Node的XPath"/>
+                                        <TextBox x:Name="tbOriStyleBody" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" Width="300" Text="//body" ></TextBox>
+                                        <Label Background="LightGray" Content="取代後的XPath"/>
+                                        <TextBox x:Name="tbAfterStyleBody" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" Width="300" Text="//div[@id='BH-master']" ></TextBox>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                            <StackPanel>
+                                <Expander x:Name="expanderImage" Background="Black" Foreground="White" Header="&lt;img&gt;...&lt;/img&gt;">
+                                    <StackPanel>
+                                        <Label Background="LightGray" Content="勇造的XPath"/>
+                                        <TextBox x:Name="tbStyleBahaAvatar" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" Width="300" Text="//div[@class='msgright']/a[@class='msgname AT1']/img|//div[@class='msgreport BC2']/a/img" ></TextBox>
+                                        <Label Background="LightGray" Content="圖片的XPath"/>
+                                        <TextBox x:Name="tbStyleImage" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Margin="0,0,0,0" Width="300" Text="//img[@style='max-width:120px;max-height:120px;']" ></TextBox>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                            <StackPanel>
+                                <Expander x:Name="expanderUseless" Background="Black" Foreground="White" Header="去除區塊的XPath">
+                                    <StackPanel>
+                                        <Label Background="LightGray" Content="「回覆他」的泡泡框："/>
+                                        <TextBox x:Name="tbUselessIconReply" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@title='回覆他']|//div[@id='MSG-box2']/script"></TextBox>
+                                        <Label Background="LightGray" Content="「刪除」按鈕："/>
+                                        <TextBox x:Name="tbUselessIconDel" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@class='msgdel AB1']"></TextBox>
+                                        <Label Background="LightGray" Content="公會縮圖："/>
+                                        <TextBox x:Name="tbUselessIconGuild" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014']"></TextBox>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+                </Expander>
+            </StackPanel>
+            <Separator/>
+            <Label Content="【圖片】"/>
+
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <Label Content="顯示的最大尺寸：" />
+                <TextBox x:Name="tbImgMaxWidth" HorizontalAlignment="Left" Text="120" VerticalAlignment="Top" Width="50" />
+                <Label Content="x"/>
+                <TextBox x:Name="tbImgMaxHeight" HorizontalAlignment="Left" Text="120" VerticalAlignment="Top" Width="50" />
+                <Label Content="(寬 x 高)"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="25,0,0,0">
+                <Label Content="單圖尺寸上限：超過"/>
+                <TextBox x:Name="tbImgMaxKilobyte" HorizontalAlignment="Left" Text="256" VerticalAlignment="Top" Width="50" />
+                <Label Content="KB 會進行壓縮"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="50,0,0,0">
+                <Label Content="壓縮後尺寸上限："/>
+                <TextBox x:Name="tbImgZipedMaxWidth" HorizontalAlignment="Left" Text="1024" VerticalAlignment="Top" Width="50" />
+                <Label Content="x"/>
+                <TextBox x:Name="tbImgZipedMaxHeight" HorizontalAlignment="Left" Text="768" VerticalAlignment="Top" Width="50" />
+                <Label Content="(寬 x 高)"/>
+            </StackPanel>
+            <Separator/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="setDefault" Content="確認" Width="50" Margin="5,5" Click="setDefault_Click" />
+                <Button x:Name="cancel" Content="取消" Width="50" Click="cancel_Click" Margin="5,5"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Window>
