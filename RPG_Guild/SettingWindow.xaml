@@ -85,7 +85,7 @@
                                         <Label Background="LightGray" Content="「刪除」按鈕："/>
                                         <TextBox x:Name="tbUselessIconDel" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@class='msgdel AB1']"></TextBox>
                                         <Label Background="LightGray" Content="公會縮圖："/>
-                                        <TextBox x:Name="tbUselessIconGuild" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014']"></TextBox>
+                                        <TextBox x:Name="tbUselessIconGuild" Width="300" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014'] | //a[@href='https://guild.gamer.com.tw/guild.php?sn=3014']"></TextBox>
                                     </StackPanel>
                                 </Expander>
                             </StackPanel>

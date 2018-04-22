@@ -234,7 +234,7 @@ namespace BAHA_MsgSave
                 ExportSetting.Add("Style_StyleImage", "//img[@style='max-width:120px;max-height:120px;']");
                 ExportSetting.Add("Style_UselessIconReply", "//a[@title='回覆他']|//div[@id='MSG-box2']/script");
                 ExportSetting.Add("Style_UselessIconDel", "//a[@class='msgdel AB1']");
-                ExportSetting.Add("Style_UselessIconGuild", "//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014']");
+                ExportSetting.Add("Style_UselessIconGuild", "//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014'] | //a[@href='https://guild.gamer.com.tw/guild.php?sn=3014']"); //2018.4.22 適應https
 
                 selSourceDir.IsEnabled = false;
                 modAll.IsEnabled = false;

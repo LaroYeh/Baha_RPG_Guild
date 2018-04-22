@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BAHA_MsgSave"
         xmlns:gif="http://wpfanimatedgif.codeplex.com" 
         mc:Ignorable="d"
-        Title="「RPG公會專用」，對串排版修飾 v0.6.2" Height="400" Width="525" Icon="egg_256.ico">
+        Title="「RPG公會專用」，對串排版修飾 v0.6.3" Height="400" Width="525" Icon="egg_256.ico">
     <Grid>
         <!--使用資料流的按鈕，程式碼保留，但避免誤觸而隱藏-->
         <TextBox x:Name="showLog" HorizontalAlignment="Left" Height="85" Margin="10,275,0,0" TextWrapping="Wrap" Text="執行過程" VerticalAlignment="Top" Width="497" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>

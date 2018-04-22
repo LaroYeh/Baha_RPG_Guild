@@ -112,8 +112,9 @@ namespace BAHA_MsgSave
         {
             if (_ExportSetting["Style_Type"] == "Simple") //如果用預設...
             {
-                //移除「回覆對方的泡泡框、Lock圖片、公會圖片、翻除按鈕」
-                try {
+                //移除「回覆對方的泡泡框、Lock圖片、刪除按鈕、公會圖片」
+                try
+                {
                     foreach (HtmlNode node in modLog.DocumentNode.SelectNodes("//a[@title='回覆他']|//div[@id='MSG-box2']/script"))
                     {
                         node.RemoveAll();
@@ -137,7 +138,8 @@ namespace BAHA_MsgSave
                 catch (Exception ex) { }
                 try
                 {
-                    foreach (HtmlNode node in modLog.DocumentNode.SelectNodes("//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014']"))
+                    //foreach (HtmlNode node in modLog.DocumentNode.SelectNodes("//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014']"))
+                    foreach (HtmlNode node in modLog.DocumentNode.SelectNodes("//a[@href='http://guild.gamer.com.tw/guild.php?sn=3014'] | //a[@href='https://guild.gamer.com.tw/guild.php?sn=3014']")) //2018.4.22 適應https
                     {
                         node.RemoveAll();
                     }
@@ -146,7 +148,7 @@ namespace BAHA_MsgSave
             }
             else //如果是進階...
             {
-                //移除「回覆對方的泡泡框、Lock圖片、公會圖片、翻除按鈕」
+                //移除「回覆對方的泡泡框、Lock圖片、刪除按鈕、公會圖片」
                 try
                 {
                     foreach (HtmlNode node in modLog.DocumentNode.SelectNodes(_ExportSetting["Style_UselessIconReply"]))
